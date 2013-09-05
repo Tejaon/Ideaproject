@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/games.iml" filepath="$PROJECT_DIR$/games.iml" />
+      <module fileurl="file://C:/CM_test/Build_CM_Test_2013/CM/repo/server/server.iml" filepath="C:/CM_test/Build_CM_Test_2013/CM/repo/server/server.iml" />
+      <module fileurl="file://C:/CM_test/Build_CM_Test_2013/CM/repo/server/test/test.iml" filepath="C:/CM_test/Build_CM_Test_2013/CM/repo/server/test/test.iml" />
+    </modules>
+  </component>
+</project>
+
