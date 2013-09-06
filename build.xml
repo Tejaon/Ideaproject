@@ -12,7 +12,7 @@
         <javac srcdir="src" destdir="RomanConverter/build/classes" />
     </target>
     <target name="jar" depends="compile">
-     <jar destfile="RomanConverter/build/jar/app.jar" basedir="build/classes" />
+     <jar destfile="RomanConverter/build/jar/app.jar" basedir="RomanConverter/build/classes" />
      </target>
 
 
