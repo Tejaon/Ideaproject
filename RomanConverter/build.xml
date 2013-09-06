@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project name="Javaproject" default="jar">
     <target name="clean">
-        <delete dir="build/classes" />
-        <delete dir="build/jar" />
+        <delete dir="RomanConverter/build/classes" />
+        <delete dir="RomanConverter/build/jar" />
     </target>
     <target name="init" depends="clean" >
-        <mkdir dir="build/classes" />
-        <mkdir dir="build/jar" />
+        <mkdir dir="RomanConverter/build/classes" />
+        <mkdir dir="RomanConverter/build/jar" />
     </target>
     <target name="compile" depends="init">
-        <javac srcdir="src" destdir="build/classes" />
+        <javac srcdir="src" destdir="RomanConverter/build/classes" />
     </target>
     <target name="jar" depends="compile">
-        <jar destfile="build/jar/app.jar" basedir="build/classes" />
+        <jar destfile="RomanConverter/build/jar/app.jar" basedir="RomanConverter/build/classes" />
      </target>
 
 </project>
