@@ -9,7 +9,7 @@
         <mkdir dir="RomanConverter/build/jar" />
     </target>
     <target name="compile" depends="init">
-        <javac srcdir="src" destdir="RomanConverter/build/classes" />
+        <javac srcdir="RomanConverter/src" destdir="RomanConverter/build/classes" />
     </target>
     <target name="jar" depends="compile">
      <jar destfile="RomanConverter/build/jar/app.jar" basedir="RomanConverter/build/classes" />
