@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_romanconverter" default="compile.module.romanconverter">
+  <dirname property="module.romanconverter.basedir" file="${ant.file.module_romanconverter}"/>
+  
+  <property name="module.jdk.home.romanconverter" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.romanconverter" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.romanconverter" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.romanconverter" value="${compiler.args}"/>
+  
+  <property name="romanconverter.output.dir" value="${module.romanconverter.basedir}/out/production/RomanConverter"/>
+  <property name="romanconverter.testoutput.dir" value="${module.romanconverter.basedir}/out/test/RomanConverter"/>
+  
+  <path id="romanconverter.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="romanconverter.module.production.classpath">
+    <path refid="${module.jdk.classpath.romanconverter}"/>
+  </path>
+  
+  <path id="romanconverter.runtime.production.module.classpath">
+    <pathelement location="${romanconverter.output.dir}"/>
+  </path>
+  
+  <path id="romanconverter.module.classpath">
+    <path refid="${module.jdk.classpath.romanconverter}"/>
+    <pathelement location="${romanconverter.output.dir}"/>
+  </path>
+  
+  <path id="romanconverter.runtime.module.classpath">
+    <pathelement location="${romanconverter.testoutput.dir}"/>
+    <pathelement location="${romanconverter.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.romanconverter">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.romanconverter">
+    <patternset refid="excluded.from.module.romanconverter"/>
+  </patternset>
+  
+  <path id="romanconverter.module.sourcepath">
+    <dirset dir="${module.romanconverter.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.romanconverter" depends="compile.module.romanconverter.production,compile.module.romanconverter.tests" description="Compile module RomanConverter"/>
+  
+  <target name="compile.module.romanconverter.production" depends="register.custom.compilers" description="Compile module RomanConverter; production classes">
+    <mkdir dir="${romanconverter.output.dir}"/>
+    <javac2 destdir="${romanconverter.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.romanconverter}/javac">
+      <compilerarg line="${compiler.args.romanconverter}"/>
+      <bootclasspath refid="romanconverter.module.bootclasspath"/>
+      <classpath refid="romanconverter.module.production.classpath"/>
+      <src refid="romanconverter.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.romanconverter"/>
+    </javac2>
+    
+    <copy todir="${romanconverter.output.dir}">
+      <fileset dir="${module.romanconverter.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.romanconverter.tests" depends="register.custom.compilers,compile.module.romanconverter.production" description="compile module RomanConverter; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.romanconverter" description="cleanup module">
+    <delete dir="${romanconverter.output.dir}"/>
+    <delete dir="${romanconverter.testoutput.dir}"/>
+  </target>
+  
+  <property name="romanconverter.plugin.path.jar" value="${module.romanconverter.basedir}/RomanConverter.jar"/>
+  
+  <!-- Build archive for plugin 'RomanConverter' -->
+  <target name="plugin.build.jar.romanconverter" depends="compile.module.romanconverter" description="Build plugin archive for module &#39;RomanConverter&#39;">
+    <jar destfile="${romanconverter.plugin.path.jar}" duplicate="preserve">
+      <zipfileset dir="${module.romanconverter.basedir}/out/production/RomanConverter"/>
+      <zipfileset file="${module.romanconverter.basedir}/META-INF/plugin.xml" prefix="META-INF"/>
+      <manifest>
+        <attribute name="Created-By" value="IntelliJ IDEA"/>
+        <attribute name="Manifest-Version" value="1.0"/>
+      </manifest>
+    </jar>
+  </target>
+</project>
