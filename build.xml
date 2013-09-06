@@ -2,7 +2,7 @@
 <project name="Javaproject" default="jar">
     <target name="clean">
         <delete dir="RomanConverter/build/classes" />
-        <delete dir="build/jar" />
+        <delete dir="RomanConverter/build/jar" />
     </target>
     <target name="init" depends="clean" >
         <mkdir dir="RomanConverter/build/classes" />
