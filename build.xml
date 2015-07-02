@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project name="Javaproject" default="jar">
     <target name="clean">
+         <description>
+         simple example build file to clean
+         </description>
         <delete dir="RomanConverter/build/classes" />
         <delete dir="RomanConverter/build/jar" />
     </target>
